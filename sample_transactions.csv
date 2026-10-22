@@ -1,0 +1,11 @@
+transaction_id,account_id,amount,currency,timestamp,merchant_name,merchant_category,channel,status,location,ip_address
+TXN-CSV-001,ACC-001,45.50,USD,2026-10-18 09:15:00,Local Grocery Mart,groceries,in_store,completed,"Seattle, US",192.168.1.10
+TXN-CSV-002,ACC-001,12.00,USD,2026-10-18 10:30:00,Downtown Coffee,food_beverage,in_store,completed,"Seattle, US",192.168.1.10
+TXN-CSV-003,ACC-003,7500.00,USD,2026-10-18 11:45:00,High End Electronics Store,electronics,online,completed,"New York, US",198.51.100.22
+TXN-CSV-004,ACC-004,250.00,USD,2026-10-18 12:00:00,Digital Gaming Store,entertainment,online,completed,"Chicago, US",203.0.113.45
+TXN-CSV-005,ACC-004,275.00,USD,2026-10-18 12:02:00,Digital Gift Cards,entertainment,online,completed,"Chicago, US",203.0.113.45
+TXN-CSV-006,ACC-004,300.00,USD,2026-10-18 12:03:30,Instant Transfer,money_transfer,online,completed,"Chicago, US",203.0.113.45
+TXN-CSV-007,ACC-005,6200.00,USD,2026-10-18 14:10:00,Offshore Coin Marketplace,crypto,online,completed,"Tor Exit Node",185.220.101.5
+TXN-CSV-008,ACC-002,85.00,USD,2026-10-18 15:20:00,Office Stationery Co,office_supplies,online,completed,"San Francisco, US",198.51.100.89
+TXN-CSV-009,ACC-004,500.00,USD,2026-10-18 16:00:00,Payment Processor Terminal,general,online,failed,"Chicago, US",203.0.113.45
+TXN-CSV-010,ACC-004,500.00,USD,2026-10-18 16:05:00,Payment Processor Terminal,general,online,failed,"Chicago, US",203.0.113.45

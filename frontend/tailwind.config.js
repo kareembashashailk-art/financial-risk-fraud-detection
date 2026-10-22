@@ -1,0 +1,26 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        navy: {
+          900: '#0B132B',
+          800: '#1C2541',
+          700: '#3A506B',
+          600: '#486581',
+          50: '#F0F4F8'
+        },
+        risk: {
+          low: '#10B981',      // Emerald 500
+          medium: '#F59E0B',   // Amber 500
+          high: '#EF4444',     // Rose/Red 500
+        }
+      }
+    },
+  },
+  plugins: [],
+}

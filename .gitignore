@@ -1,0 +1,23 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+dist/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# OS/editor files
+.DS_Store
+.vscode/
