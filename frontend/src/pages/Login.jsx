@@ -39,11 +39,11 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4 selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4 selection:bg-blue-600 selection:text-white transition-colors">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex p-3 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-400 mb-4 shadow-lg shadow-blue-500/10">
+          <div className="inline-flex p-3 rounded-2xl bg-blue-600/10 border border-blue-500/30 text-blue-500 mb-4 shadow-lg shadow-blue-500/10">
             <ShieldAlert className="w-10 h-10" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white">Financial Risk Analysis</h1>
@@ -53,7 +53,7 @@ export const Login = () => {
         </div>
 
         {/* Card */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur">
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur transition-colors">
           {errorMsg && (
             <div className="mb-6 p-4 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-300 text-sm flex items-start gap-3">
               <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
@@ -75,8 +75,8 @@ export const Login = () => {
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                  placeholder="Enter username"
+                  placeholder="admin or analyst"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
                 />
               </div>
             </div>
@@ -94,8 +94,8 @@ export const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                   placeholder="••••••••••••"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors"
                 />
               </div>
             </div>
@@ -103,10 +103,10 @@ export const Login = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 disabled:opacity-50 transition-all"
+              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 disabled:opacity-50 transition-all theme-keep-white"
             >
-              {submitting ? 'Authenticating...' : 'Sign In to Workspace'}
-              <ArrowRight className="w-4 h-4" />
+              <span className="theme-keep-white">{submitting ? 'Authenticating...' : 'Sign In to Workspace'}</span>
+              <ArrowRight className="w-4 h-4 theme-keep-white" />
             </button>
           </form>
 
@@ -143,7 +143,7 @@ export const Login = () => {
 
         {/* Prototype notice */}
         <div className="mt-6 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-slate-600" />
+          <ShieldCheck className="w-4 h-4 text-slate-500" />
           <span>College B.Tech Capstone Project • Synthetic Data Environment</span>
         </div>
       </div>

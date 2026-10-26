@@ -2,25 +2,185 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================================
+   THEME DEFINITIONS: ONLY DARK AND NORMAL (LIGHT)
+   ========================================================================= */
+
+:root,
+[data-theme="dark"] {
+  --theme-id: 'dark';
+  color-scheme: dark;
+
+  /* Dark Theme Palette (Obsidian & Electric Blue) */
+  --color-slate-950: 11 15 25;    /* #0B0F19 deep dark background */
+  --color-slate-900: 15 23 42;    /* #0F172A dark slate surface */
+  --color-slate-850: 22 32 50;    /* #162032 panel */
+  --color-slate-800: 30 41 59;    /* #1E293B card bg / inputs */
+  --color-slate-700: 51 65 85;    /* #334155 border */
+  --color-slate-600: 71 85 105;   /* #475569 border highlight */
+  --color-slate-500: 100 116 139; /* #64748B muted text */
+  --color-slate-400: 148 163 184; /* #94A3B8 secondary text */
+  --color-slate-300: 203 213 225; /* #CBD5E1 medium text */
+  --color-slate-200: 226 232 240; /* #E2E8F0 text soft */
+  --color-slate-100: 248 250 252; /* #F8FAFC text primary */
+  --color-slate-50: 255 255 255;  /* #FFFFFF white */
+
+  /* Text Headings */
+  --color-text-heading: #FFFFFF;
+
+  /* Primary Brand: Electric Cyber Blue */
+  --color-primary-50: 239 246 255;   /* #EFF6FF */
+  --color-primary-100: 219 234 254;  /* #DBEAFE */
+  --color-primary-200: 191 219 254;  /* #BFDBFE */
+  --color-primary-300: 147 197 253;  /* #93C5FD */
+  --color-primary-400: 96 165 250;   /* #60A5FA */
+  --color-primary-500: 59 130 246;   /* #3B82F6 */
+  --color-primary-600: 37 99 235;    /* #2563EB */
+  --color-primary-700: 29 78 216;    /* #1D4ED8 */
+  --color-primary-800: 30 64 175;    /* #1E40AF */
+  --color-primary-900: 30 58 138;    /* #1E3A8A */
+
+  --scrollbar-track: #0F172A;
+  --scrollbar-thumb: #334155;
+  --scrollbar-thumb-hover: #475569;
+
+  --theme-card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+  --theme-id: 'light';
+  color-scheme: light;
+
+  /* Normal Theme Palette (Corporate Daylight Financial) */
+  --color-slate-950: 248 250 252; /* #F8FAFC page bg */
+  --color-slate-900: 255 255 255; /* #FFFFFF clean surface */
+  --color-slate-850: 245 247 250; /* #F5F7FA elevated */
+  --color-slate-800: 241 245 249; /* #F1F5F9 card bg / inputs */
+  --color-slate-700: 226 232 240; /* #E2E8F0 border */
+  --color-slate-600: 203 213 225; /* #CBD5E1 border hover */
+  --color-slate-500: 148 163 184; /* #94A3B8 muted text */
+  --color-slate-400: 100 116 139; /* #64748B secondary text */
+  --color-slate-300: 71 85 105;   /* #475569 medium text */
+  --color-slate-200: 51 65 85;    /* #334155 body text */
+  --color-slate-100: 15 23 42;    /* #0F172A primary text */
+  --color-slate-50: 2 6 23;       /* #020617 deepest dark */
+
+  /* Text Headings */
+  --color-text-heading: #0F172A;  /* Deep Slate */
+
+  /* Primary Brand: Corporate Royal Sapphire Blue */
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-200: 191 219 254;
+  --color-primary-300: 147 197 253;
+  --color-primary-400: 59 130 246;
+  --color-primary-500: 37 99 235;
+  --color-primary-600: 29 78 216;    /* #1D4ED8 */
+  --color-primary-700: 30 64 175;    /* #1E40AF */
+  --color-primary-800: 30 58 138;
+  --color-primary-900: 23 37 84;
+
+  --scrollbar-track: #F1F5F9;
+  --scrollbar-thumb: #CBD5E1;
+  --scrollbar-thumb-hover: #94A3B8;
+
+  --theme-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
 @layer base {
   body {
-    @apply bg-slate-900 text-slate-100 min-h-screen antialiased;
+    @apply bg-slate-950 text-slate-100 min-h-screen antialiased transition-colors duration-200;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
-/* Custom styled scrollbars for financial tables */
+/* =========================================================================
+   CONTRAST & HEADING RULES FOR NORMAL (LIGHT) THEME
+   ========================================================================= */
+
+/* Headings and primary text in normal (light) mode use dark heading color */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+  color: var(--color-text-heading);
+}
+
+[data-theme="light"] .text-white:not(.theme-keep-white) {
+  color: var(--color-text-heading);
+}
+
+/* Colored buttons and active pills retain crisp white text */
+button.bg-blue-600,
+button.bg-blue-500,
+button.bg-rose-600,
+button.bg-rose-500,
+button.bg-emerald-600,
+button.bg-emerald-500,
+a.bg-blue-600,
+a.bg-blue-500,
+.theme-keep-white,
+[class*="bg-blue-600"],
+[class*="bg-rose-600"],
+[class*="bg-emerald-600"] {
+  color: #ffffff !important;
+}
+
+button.bg-blue-600 *,
+button.bg-blue-500 *,
+button.bg-rose-600 *,
+button.bg-rose-500 *,
+button.bg-emerald-600 *,
+a.bg-blue-600 *,
+a.bg-blue-500 *,
+.theme-keep-white * {
+  color: #ffffff !important;
+}
+
+/* Active NavLink pill in sidebar */
+[data-theme="light"] aside nav a.bg-blue-600,
+[data-theme="dark"] aside nav a.bg-blue-600 {
+  color: #ffffff !important;
+  background-color: rgb(var(--color-primary-600)) !important;
+}
+aside nav a.bg-blue-600 * {
+  color: #ffffff !important;
+}
+
+/* Forms: Inputs, selects, and textareas */
+[data-theme="light"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  color: var(--color-text-heading) !important;
+  background-color: rgb(var(--color-slate-900)) !important;
+  border-color: rgb(var(--color-slate-700)) !important;
+}
+
+[data-theme="light"] select option {
+  background-color: #FFFFFF !important;
+  color: var(--color-text-heading) !important;
+}
+
+/* Card Glow & Elevation */
+[data-theme="light"] .bg-slate-900 {
+  background-color: #FFFFFF;
+  box-shadow: var(--theme-card-shadow);
+}
+
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--scrollbar-thumb-hover);
 }

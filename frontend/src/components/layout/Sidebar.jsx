@@ -7,11 +7,11 @@ import {
   Sliders,
   UploadCloud,
   Users,
-  ShieldCheck,
   History,
   ShieldAlert,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { ThemeSwitcher } from '../common/ThemeSwitcher';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { user, isSuperAdmin, canReviewAlerts } = useAuth();
@@ -43,13 +43,13 @@ export const Sidebar = ({ isOpen, onClose }) => {
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-700/60 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Logo / Header */}
-        <div className="h-16 flex items-center gap-3 px-6 border-b border-slate-800 bg-slate-950/40">
-          <div className="p-2 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30">
+        <div className="h-16 flex items-center gap-3 px-6 border-b border-slate-700/60 bg-slate-950/40">
+          <div className="p-2 rounded-xl bg-blue-600/15 text-blue-500 border border-blue-500/30">
             <ShieldAlert className="w-6 h-6" />
           </div>
           <div>
@@ -87,10 +87,15 @@ export const Sidebar = ({ isOpen, onClose }) => {
           })}
         </nav>
 
+        {/* Theme Preset Control in Sidebar */}
+        <div className="px-3 py-3 border-t border-slate-700/60 bg-slate-950/20">
+          <ThemeSwitcher variant="sidebar" />
+        </div>
+
         {/* User Card at bottom */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950/30">
+        <div className="p-4 border-t border-slate-700/60 bg-slate-950/30">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-sm text-blue-400">
+            <div className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-sm text-blue-500">
               {user?.username?.slice(0, 2).toUpperCase() || 'US'}
             </div>
             <div className="flex-1 min-w-0">

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Layout } from './components/layout/Layout';
 import { LoadingSpinner } from './components/common/LoadingSpinner';
 
@@ -47,9 +48,10 @@ const SuperAdminRoute = ({ children }) => {
 export default function App() {
   return (
     <BrowserRouter>
-      <NotificationProvider>
-        <AuthProvider>
-          <Routes>
+      <ThemeProvider>
+        <NotificationProvider>
+          <AuthProvider>
+            <Routes>
             <Route path="/login" element={<Login />} />
 
             <Route
@@ -81,6 +83,7 @@ export default function App() {
           </Routes>
         </AuthProvider>
       </NotificationProvider>
-    </BrowserRouter>
+    </ThemeProvider>
+  </BrowserRouter>
   );
 }

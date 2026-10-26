@@ -12,6 +12,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useTheme } from '../../context/ThemeContext';
 
 ChartJS.register(
   CategoryScale,
@@ -26,9 +27,22 @@ ChartJS.register(
 );
 
 export const VolumeChart = ({ timeline = [] }) => {
+  const { isDark } = useTheme();
+
   const labels = timeline.map((t) => t.date);
   const txCounts = timeline.map((t) => t.transactions);
   const alertCounts = timeline.map((t) => t.alerts);
+
+  // Dynamic Theme Colors: Dark vs Normal
+  const txColor = isDark ? '#3B82F6' : '#2563EB';
+  const txBg = isDark ? 'rgba(59, 130, 246, 0.12)' : 'rgba(37, 99, 235, 0.1)';
+  const alertColor = '#EF4444';
+  const alertBg = 'rgba(239, 68, 68, 0.12)';
+  const gridColor = isDark ? 'rgba(51, 65, 85, 0.35)' : 'rgba(226, 232, 240, 0.85)';
+  const tickColor = isDark ? '#94A3B8' : '#64748B';
+  const tooltipBg = '#0F172A';
+  const tooltipBorder = isDark ? '#334155' : '#CBD5E1';
+  const tooltipBody = '#CBD5E1';
 
   const data = {
     labels,
@@ -36,21 +50,21 @@ export const VolumeChart = ({ timeline = [] }) => {
       {
         label: 'Transactions',
         data: txCounts,
-        borderColor: '#3b82f6',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        borderColor: txColor,
+        backgroundColor: txBg,
         tension: 0.3,
         fill: true,
-        pointBackgroundColor: '#3b82f6',
+        pointBackgroundColor: txColor,
         pointRadius: 4,
       },
       {
         label: 'Alerts Triggered',
         data: alertCounts,
-        borderColor: '#ef4444',
-        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+        borderColor: alertColor,
+        backgroundColor: alertBg,
         tension: 0.3,
         fill: true,
-        pointBackgroundColor: '#ef4444',
+        pointBackgroundColor: alertColor,
         pointRadius: 4,
       },
     ],
@@ -66,28 +80,29 @@ export const VolumeChart = ({ timeline = [] }) => {
     plugins: {
       legend: {
         labels: {
-          color: '#94a3b8',
+          color: tickColor,
           font: { family: 'inherit', size: 12 },
           usePointStyle: true,
         },
       },
       tooltip: {
-        backgroundColor: '#0f172a',
-        borderColor: '#334155',
+        backgroundColor: tooltipBg,
+        borderColor: tooltipBorder,
         borderWidth: 1,
-        titleColor: '#f8fafc',
-        bodyColor: '#cbd5e1',
+        titleColor: '#ffffff',
+        bodyColor: tooltipBody,
         padding: 10,
+        boxPadding: 4,
       },
     },
     scales: {
       x: {
-        grid: { color: 'rgba(51, 65, 85, 0.3)' },
-        ticks: { color: '#94a3b8' },
+        grid: { color: gridColor },
+        ticks: { color: tickColor },
       },
       y: {
-        grid: { color: 'rgba(51, 65, 85, 0.3)' },
-        ticks: { color: '#94a3b8', stepSize: 1 },
+        grid: { color: gridColor },
+        ticks: { color: tickColor, stepSize: 1 },
         beginAtZero: true,
       },
     },
