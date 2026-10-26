@@ -18,7 +18,13 @@ class Config:
     # Example SQLite: sqlite:////absolute/path/or/relative/financial_risk.db
     raw_db_url = os.environ.get('DATABASE_URL')
     if raw_db_url:
-        SQLALCHEMY_DATABASE_URI = raw_db_url
+       SQLALCHEMY_DATABASE_URI = (
+    raw_db_url.replace("postgres://", "postgresql+psycopg://", 1)
+    if raw_db_url.startswith("postgres://")
+    else raw_db_url.replace("postgresql://", "postgresql+psycopg://", 1)
+    if raw_db_url.startswith("postgresql://")
+    else raw_db_url
+)
     else:
         # Default zero-setup fallback to SQLite
         db_path = os.path.join(BASE_DIR, '..', 'financial_risk.db')
